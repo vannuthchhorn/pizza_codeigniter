@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="auth__form_actions">
-        <button class="btn btn-primary btn-lg btn-block">
+      <a href="/logined" class="btn btn-primary btn-lg btn-block">
           NEXT
-        </button>
+        </a>
         <div class="mt-2">
           <a href="/signin" class="small text-uppercase">
             SIGN IN INSTEAD
