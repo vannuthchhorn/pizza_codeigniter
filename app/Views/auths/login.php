@@ -13,7 +13,7 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email" value="<?php //set_value('email')?>">
+            <input type="email" class="form-control" placeholder="Enter email" value="<?= set_value('email'); ?>">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>

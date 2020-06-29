@@ -5,7 +5,7 @@
     
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/signin" method="post">
+    <form class="auth__form" autocomplete="off" action="" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
         <img src="images/logo.svg" alt="" width="50">
@@ -14,7 +14,7 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email" value="<?php //set_value('email')?>">
+            <input type="email" class="form-control" placeholder="Enter email" value="<?= set_value('email')?>">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name=""  class="form-control" placeholder="Address" value="<?php set_value('address')?>"></textarea>
+            <textarea name=""  class="form-control" placeholder="Address" value="<?= set_value('address')?>"></textarea>
           </div>
           <div class="form-check">
             <label class="form-check-label">
@@ -30,7 +30,16 @@
             </label>
         </div>
         </div>
+
+      <?php if (isset($validation)): ?>
+        <div class="col-12">
+          <div class="alert alert-danger" role="alert">
+            <?= $validation->listErrors() ?>
+          </div>
+        </div>
+      <?php endif;?>
       </div>
+
       <div class="auth__form_actions">
       <button type="submit" class="btn btn-primary btn-lg btn-block">
           NEXT
