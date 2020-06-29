@@ -14,15 +14,15 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" class="form-control" placeholder="Enter email">
+            <input type="email" class="form-control" placeholder="Enter email" value="<?php //set_value('email')?>">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" value="">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name=""  class="form-control" placeholder="Address"></textarea>
+            <textarea name=""  class="form-control" placeholder="Address" value="<?php set_value('address')?>"></textarea>
           </div>
           <div class="form-check">
             <label class="form-check-label">
@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="auth__form_actions">
-      <a href="/logined" class="btn btn-primary btn-lg btn-block">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
           NEXT
-        </a>
+        </button>
         <div class="mt-2">
           <a href="/signin" class="small text-uppercase">
             SIGN IN INSTEAD
