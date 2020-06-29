@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/','Users::index');
 $routes->match(['get','post'],'/signup', 'Users::btnCreateAccount');
 $routes->get('/signin', 'Users::btnSigninAccount');
-$routes->get('/logined', 'Users::logined');
+$routes->get('/signin', 'Users::signin');
 
 /**
  * --------------------------------------------------------------------

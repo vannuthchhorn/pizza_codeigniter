@@ -5,7 +5,7 @@
     
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="" method="post">
+    <form class="auth__form" autocomplete="off" action="/signin" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
         <img src="images/logo.svg" alt="" width="50">
@@ -22,24 +22,24 @@
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name=""  class="form-control" placeholder="Address" value="<?= set_value('address')?>"></textarea>
+            <textarea name=""  class="form-control" placeholder="Address" value=""></textarea>
           </div>
+
+          <?php if (isset($validation)): ?>
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors() ?>
+              </div>
+            </div>
+          <?php endif;?>
+
           <div class="form-check">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input" value="">I'm a manager
             </label>
         </div>
         </div>
-
-      <?php if (isset($validation)): ?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors() ?>
-          </div>
-        </div>
-      <?php endif;?>
       </div>
-
       <div class="auth__form_actions">
       <button type="submit" class="btn btn-primary btn-lg btn-block">
           NEXT

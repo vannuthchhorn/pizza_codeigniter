@@ -52,7 +52,7 @@ class Users extends BaseController
         return view('auths/login', $data);
     }
 
-    public function logined()
+    public function signin()
     {
         return view('index');
     }

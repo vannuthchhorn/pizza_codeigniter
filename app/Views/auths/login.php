@@ -7,9 +7,18 @@
     </div>
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/" method="post">
+    <form class="auth__form" autocomplete="off" action="/signin" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
+
+        <?php if (session()->get('success')): ?>
+            <div class="col-12">
+              <div class="alert alert-success" role="alert">
+                <?= session()->get('success') ?>
+              </div>
+            </div>
+          <?php endif;?>
+
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
@@ -22,9 +31,9 @@
         </div>
       </div>
       <div class="auth__form_actions">
-        <buttun type="submit" class="btn btn-primary btn-lg btn-block">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
           NEXT
-        </buttun>
+        </button>
         <div class="mt-2">
           <a href="/signup" class="small text-uppercase">
             CREATE ACCOUNT
