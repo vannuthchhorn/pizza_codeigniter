@@ -15,7 +15,7 @@ class Users extends BaseController
 			];
 			$errors = [
 				'password' => [
-					'validatUser' => 'You don\'t have account yet!! Please Register Now'
+					'validatUser' => 'You don\'t have account yet!! Please Register'
 				]
 			];
 

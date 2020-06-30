@@ -1,10 +1,10 @@
 <?php namespace App\Controllers;
-use App\Models\PizzaModel;
+use App\Models\PizzModel;
 class DashboardPizza extends BaseController
 {
 	public function index()
 	{	
-		$pizzas = new PizzaModel();
+		$pizzas = new PizzModel();
 		$data['listPizza'] = $pizzas->findAll();
 		return view('index',$data);
 	}
