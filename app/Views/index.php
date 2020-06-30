@@ -7,11 +7,11 @@
 			<div class="col-8">
 				<div class="text-right">
 
-				<?php if(session()->get('role') == 1):?>
+				<?php //if(session()->get('role') == 1):?>
 					<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
-				<?php endif ?>
+				<?php //endif ?>
 
 				</div>
 				<hr>

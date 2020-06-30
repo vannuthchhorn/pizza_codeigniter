@@ -1,10 +1,10 @@
 <?php namespace App\Controllers;
-use App\Models\PizzModel;
+use App\Models\PizzaModel;
 class DashboardPizza extends BaseController
 {
 	public function index()
 	{	
-		$pizzas = new PizzModel();
+		$pizzas = new PizzaModel();
 		$data['listPizza'] = $pizzas->findAll();
 		return view('index',$data);
 	}
@@ -29,7 +29,7 @@ class DashboardPizza extends BaseController
 					'price'=>$this->request->getVar('price'),
 					'ingredients'=>$this->request->getVar('ingredients'),
 				);
-				$pizzas->createPizza($pizzaData);
+				$pizzas->addPizza($pizzaData);
 				return redirect()->to("/dashboard");
 			}
 	    }	
