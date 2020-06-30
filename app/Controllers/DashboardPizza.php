@@ -1,11 +1,11 @@
 <?php namespace App\Controllers;
 use App\Models\PizzaModel;
-class Dashboard extends BaseController
+class DashboardPizza extends BaseController
 {
 	public function index()
 	{	
-		$pizza = new PizzaModel();
-		$data['listPizza'] = $pizza->findAll();
+		$pizzas = new PizzaModel();
+		$data['listPizza'] = $pizzas->findAll();
 		return view('index',$data);
 	}
 
@@ -23,34 +23,38 @@ class Dashboard extends BaseController
 				return redirect()->to("/dashboard");
 			}
 			else{			
-				$pizza = new PizzaModel();
+				$pizzas = new PizzaModel();
 				$pizzaData = array(
 					'name'=>$this->request->getVar('name'),
 					'price'=>$this->request->getVar('price'),
 					'ingredients'=>$this->request->getVar('ingredients'),
 				);
-				$pizza->createPizza($pizzaData);
+				$pizzas->createPizza($pizzaData);
 				return redirect()->to("/dashboard");
 			}
 	    }	
 		return view('index',$data);
 	}
+
+
 	public function editPizza($id)
 	{
-		$pizza = new PizzaModel();
-		$data['listPizza'] = $pizza->find($id);
+		$pizzas = new PizzaModel();
+		$data['listPizza'] = $pizzas->find($id);
 		return view('index',$data);
 	}
+
+
 	public function updatePizza(){
-		$pizza = new PizzaModel();
-		$pizza->update($_POST['id'], $_POST);
+		$pizzas = new PizzaModel();
+		$pizzas->update($_POST['id'], $_POST);
 		return redirect()->to('/dashboard');
 	}
 
 	public function deletePizza($id){
-		$pizza = new PizzaModel();
-		$pizza->find($id);
-		$delete = $pizza->delete($id);
+		$pizzas = new PizzaModel();
+		$pizzas->find($id);
+		$delete = $pizzas->delete($id);
 		return redirect()->to("/dashboard");
 	}
 }

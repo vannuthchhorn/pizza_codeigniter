@@ -3,7 +3,7 @@ use App\Models\UserModel;
 class Users extends BaseController
 {
 	// set login
-	public function login()
+	public function index()
 	{
 		helper(['form']);
 		$data = [];
@@ -22,10 +22,10 @@ class Users extends BaseController
 			if(!$this->validate($rules,$errors)){
 				$data['validation'] = $this->validator;
 			}else{
-				$pizza = new UserModel();
-				$user = $pizza->where('email',$this->request->getVar('email'))
+				$pizzas = new UserModel();
+				$user = $pizzas->where('email',$this->request->getVar('email'))
 							  ->first();
-				$user = $pizza->where('password',$this->request->getVar('password'))
+				$user = $pizzas->where('password',$this->request->getVar('password'))
 							  ->first();
 				$this->setUserSession($user);
 				// direct to rout dashboard
@@ -65,7 +65,7 @@ class Users extends BaseController
 			if(!$this->validate($rules)){
 				$data['validation'] = $this->validator;
 			}else{
-				$pizza = new UserModel();
+				$pizzas = new UserModel();
 
 				$newData = [
 					'email' => $this->request->getVar('email'),
@@ -74,7 +74,7 @@ class Users extends BaseController
 					'role' => $this->request->getVar('role'),
 				];
 
-				$pizza->save($newData);
+				$pizzas->save($newData);
 				$session = session();
 				$session->setFlashdata('success','Register Successful');
 				return redirect()->to('/');

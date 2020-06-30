@@ -9,11 +9,11 @@ class PizzModel extends Model
     protected $returnType     = 'array';
     protected $allowedFields = ['name','ingredients','price'];
 
-    public function createPizza($pizzaInfo){
+    public function createPizza($PizzaInformation){
         $this->insert([
-            'name' => $pizzaInfo['name'],
-            'price' => $pizzaInfo['price'],
-            'ingredients' => $pizzaInfo['ingredients'],
+            'name' => $PizzaInformation['name'],
+            'price' => $PizzaInformation['price'],
+            'ingredients' => $PizzaInformation['ingredients'],
         ]); 
     }
 }

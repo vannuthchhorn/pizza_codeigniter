@@ -44,7 +44,7 @@
         </button>
         <!-- set rount -->
         <div class="mt-2">
-          <a href="/signup  " class="small text-uppercase">
+          <a href="/signup" class="small text-uppercase">
             CREATE ACCOUNT
           </a>
         </div>

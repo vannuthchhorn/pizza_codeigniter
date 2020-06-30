@@ -38,16 +38,13 @@ $routes->setAutoRoute(true);
 // $routes->get('/signin', 'Users::signin');
 
 
-$routes->get('/', 'Users::login');
-
-$routes->get('logout', 'Users::logout');
-
+$routes->get('/', 'Users::index');
 $routes->match(['get','post'],'signup','Users::registerAccount');
+$routes->get('dashboard','DashboardPizza::index');
 
-$routes->get('dashboard','Dashboard::index');
-
-$routes->get('delete/(:num)','Dashboard::deletePizza/$1');
-$routes->get('edit/(:num)','Dashboard::editPizza/$1');
+$routes->get('delete/(:num)','DashboardPizza::deletePizza/$1');
+$routes->get('edit/(:num)','DashboardPizza::editPizza/$1');
+$routes->get('logout', 'Users::logout');
 
 /**
  * --------------------------------------------------------------------

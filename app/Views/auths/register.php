@@ -5,11 +5,11 @@
     
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/register" method="post">
+    <form class="auth__form" autocomplete="off" action="/signup" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
-        <img src="images/logo.svg" alt="" width="50">
-        Peperoni App
+          <img src="images/logo.svg" alt="" width="50">
+          Peperoni App
         </h3>
         <div>
           <div class="form-group">
