@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Address</label>
-            <textarea name=""  class="form-control" placeholder="Address" value=""></textarea>
+            <textarea name=""  class="form-control" placeholder="Address" value="<?= set_value('address')?>"></textarea>
           </div>
 
           <?php if (isset($validation)): ?>

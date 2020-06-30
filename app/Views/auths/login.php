@@ -11,6 +11,7 @@
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
 
+        <!-- Test alert success -->
         <?php if (session()->get('success')): ?>
             <div class="col-12">
               <div class="alert alert-success" role="alert">

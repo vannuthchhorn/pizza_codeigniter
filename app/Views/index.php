@@ -18,42 +18,18 @@
 						<th>Price</th>
 						<th></th>
 					</tr>
-					<tr>
-						<td class="pizzaName">Jack Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td class="text-success font-weight-bolder">15$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Seiha Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1.5$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Rady Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1500$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="pizzaName">Ronan Pizza</td>
-						<td>Tomatoes, ham, cheese, peperoni</td>
-						<td  class="text-success font-weight-bolder">1$</td>
-						<td>
-							<a href="" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-						</td>
-					</tr>
+					<?php  foreach( $pizzas as $pizza) :?>
+						<tr>
+							<td class="pizzaName"><?= $pizza['name']; ?></td>
+							<td><?= $pizza['ingredients']; ?></td>
+							<td class="text-success font-weight-bolder"><?= $pizza['price']; ?></td>
+							<td>
+								<a href="<?= $pizza['id']?>" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
+								<a href="<?= $pizza['id']?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+							</td>
+						</tr>
+					<?php endforeach?>
+					
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -77,13 +53,13 @@
         <div class="modal-body text-right">
 			<form  action="/" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Pizza name">
+					<input type="text" class="form-control" placeholder="Pizza name" name="name">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" placeholder="Prize in dollars">
+					<input type="number" class="form-control" placeholder="Prize in dollars" name="ingredients">
 				</div>
 				<div class="form-group">
-					<textarea name="" placeholder="Ingredients" class="form-control"></textarea>
+					<textarea placeholder="Ingredients" class="form-control" name="price"></textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	 &nbsp;
@@ -111,13 +87,13 @@
         <div class="modal-body text-right">
 			<form  action="/" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" value="Rady Pizza">
+					<input type="text" class="form-control"  name="name" value = "<?= $pizza['name']?>">
 				</div>
 				<div class="form-group">
-					<input type="number" class="form-control" value="100">
+					<input type="number" class="form-control"  name="ingredients" value = "<?= $pizza['ingredients']?>">
 				</div>
 				<div class="form-group">
-					<textarea name=""  class="form-control">Cheese, Tomatoes, Chicken, Salad</textarea>
+					<textarea   class="form-control"  name="price" value = "<?= $pizza['price']?>">Cheese, Tomatoes, Chicken, Salad</textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	 &nbsp;

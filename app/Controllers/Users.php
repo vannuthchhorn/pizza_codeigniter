@@ -3,14 +3,14 @@ use App\Models\UserModel;
 
 class Users extends BaseController
 {
-	public function index()
+	public function Login()
 	{
         $data = [];
         helper(['form']);
 		echo view('auths/login', $data);
     }
 
-    public function btnCreateAccount()
+    public function registerAccount()
     {
         $data = [];
         helper(['form']);
@@ -45,7 +45,7 @@ class Users extends BaseController
         return view('auths/register', $data);
     }
 
-    public function btnSigninAccount()
+    public function loginAccount()
     {
         $data = [];
         helper(['form']);
@@ -54,6 +54,6 @@ class Users extends BaseController
 
     public function signin()
     {
-        return view('index');
+        return view('signin\index');
     }
 }
