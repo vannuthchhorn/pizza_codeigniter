@@ -8,4 +8,12 @@ class PizzModel extends Model
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['name','ingredients','price'];
+
+    public function createPizza($pizzaInfo){
+        $this->insert([
+            'name' => $pizzaInfo['name'],
+            'price' => $pizzaInfo['price'],
+            'ingredients' => $pizzaInfo['ingredients'],
+        ]); 
+    }
 }

@@ -1,59 +1,91 @@
 <?php namespace App\Controllers;
 use App\Models\UserModel;
-
 class Users extends BaseController
 {
-	public function Login()
+	// set login
+	public function login()
 	{
-        $data = [];
-        helper(['form']);
-		echo view('auths/login', $data);
-    }
+		helper(['form']);
+		$data = [];
+		
+		if($this->request->getMethod() == "post"){
+			$rules = [
+				'email' => 'required|valid_email',
+				'password' => 'required|validatUser[email,password]'
+			];
+			$errors = [
+				'password' => [
+					'validatUser' => 'You don\'t have account yet!! Please Register Now'
+				]
+			];
 
-    public function registerAccount()
-    {
-        $data = [];
-        helper(['form']);
+			if(!$this->validate($rules,$errors)){
+				$data['validation'] = $this->validator;
+			}else{
+				$pizza = new UserModel();
+				$user = $pizza->where('email',$this->request->getVar('email'))
+							  ->first();
+				$user = $pizza->where('password',$this->request->getVar('password'))
+							  ->first();
+				$this->setUserSession($user);
+				// direct to rout dashboard
+				return redirect()->to('dashboard');
+			}
+		}
+		return view('auths/login',$data);
+	}
 
-        if($this->request->getMethod() == 'post')
-        {
-            // let's do validatio here
-            $rules = [
-                'email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
-                'password' => 'required|min_length[8]|max_length[255]',
-                'address' => 'required|min_length[50]|max_length[200]',
-            ];
+	public function setUserSession($user){
+		$data = [
+			'id' => $user['id'],
+			'email' => $user['email'],
+			'password' => $user['password'],
+			'address' => $user['address'],
+			'role' => $user['role'],
+		];
 
-            if (! $this->validate($rules)) {
-                $data['validation'] = $this->validator;
-            }else{
-                // store user in database
-                $model = new UserModel();
-                $newData = [
-                    'email' => $this->request('email'),
-                    'password' => $this->request('password'),
-                    'address' => $this->request('address')
-                ];
+		session()->set($data);
+		return true;
+	}	
+// register before login
+	public function registerAccount()
+	{
+		helper(['form']);
 
-                $model->save($newData);
-                $session = session();
-                $session->setFlashdata('success', 'Successful Registration');
-                return redirect()->to('/');
-            }
-        }
+		$data = [];
 
-        return view('auths/register', $data);
-    }
+		if($this->request->getMethod() == "post"){
+			$rules = [
+				'email' => 'required|valid_email',
+				'password' => 'required',
+				'address' => 'required',
+			];
+			if(!$this->validate($rules)){
+				$data['validation'] = $this->validator;
+			}else{
+				$pizza = new UserModel();
 
-    public function loginAccount()
-    {
-        $data = [];
-        helper(['form']);
-        return view('auths/login', $data);
-    }
+				$newData = [
+					'email' => $this->request->getVar('email'),
+					'password' => $this->request->getVar('password'),
+					'address' => $this->request->getVar('address'),
+					'role' => $this->request->getVar('role'),
+				];
 
-    public function signin()
-    {
-        return view('signin\index');
-    }
+				$pizza->save($newData);
+				$session = session();
+				$session->setFlashdata('success','successful Register');
+				return redirect()->to('/');
+			}
+
+		}
+
+		return view('auths/register',$data);
+	}
+
+	public function logout(){
+		session()->destroy();
+		return redirect()->to('/');
+	}
+
 }
