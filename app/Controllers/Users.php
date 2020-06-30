@@ -47,7 +47,9 @@ class Users extends BaseController
 		session()->set($data);
 		return true;
 	}	
-// register before login
+
+
+	// for register account
 	public function registerAccount()
 	{
 		helper(['form']);
@@ -74,7 +76,7 @@ class Users extends BaseController
 
 				$pizza->save($newData);
 				$session = session();
-				$session->setFlashdata('success','successful Register');
+				$session->setFlashdata('success','Register Successful');
 				return redirect()->to('/');
 			}
 

@@ -15,7 +15,7 @@ class Dashboard extends BaseController
 		if($this->request->getMethod() == "post"){
 			$rules = [
 				'name'=>'required',
-				'prize'=>'required',
+				'price'=>'required',
 				'ingredients'=>'required'
 			];
 		    if(!$this->validate($rules)){
@@ -26,7 +26,7 @@ class Dashboard extends BaseController
 				$pizza = new PizzaModel();
 				$pizzaData = array(
 					'name'=>$this->request->getVar('name'),
-					'prize'=>$this->request->getVar('prize'),
+					'price'=>$this->request->getVar('price'),
 					'ingredients'=>$this->request->getVar('ingredients'),
 				);
 				$pizza->createPizza($pizzaData);
