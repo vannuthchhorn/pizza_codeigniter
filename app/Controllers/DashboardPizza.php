@@ -2,6 +2,7 @@
 use App\Models\PizzaModel;
 class DashboardPizza extends BaseController
 {
+	// function for link to DASHBOARD
 	public function ListOfPizza()
 	{	
 		$pizzas = new PizzaModel();
@@ -9,6 +10,7 @@ class DashboardPizza extends BaseController
 		return view('index', $data);
 	}
 
+	// function for add pizza to the list
 	public function addPizza()
 	{
 		helper(['form']);
@@ -37,7 +39,7 @@ class DashboardPizza extends BaseController
 		return view('index',$data);
 	}
 
-
+	// function for edit pizza
 	public function editPizza($id)
 	{
 		$pizzas = new PizzaModel();
@@ -45,7 +47,7 @@ class DashboardPizza extends BaseController
 		return view('index',$data);
 	}
 
-
+	//function for update pizza
 	public function updatePizza()
 	{
 		$pizzas = new PizzaModel();
@@ -53,6 +55,7 @@ class DashboardPizza extends BaseController
 		return redirect()->to('/dashboard');
 	}
 
+	// function for delete pizza
 	public function deletePizza($id)
 	{
 		$pizzas = new PizzaModel();

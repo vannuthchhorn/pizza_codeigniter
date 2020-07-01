@@ -8,11 +8,11 @@
 			<div class="col-8">
 				<div class="text-right">
 
-				<?php //if(session()->get('role') == 1):?>
+				<?php if(session()->get('role') == 1):?>
 					<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
-				<?php //endif ?>
+				<?php endif ?>
 
 				</div>
 				<hr>
@@ -26,15 +26,15 @@
 						<?php endif ?>
 					</tr>
 
-					<?php foreach($listPizza as $key => $pizza) : ?>
+					<?php foreach($listPizza as $key => $pizzas) : ?>
 					<tr>
-						<td class="pizzaName"><?= $pizza['name']; ?></td>
-						<td><?= $pizza['ingredients']; ?></td>
-						<td class="text-success font-weight-bolder"><?= $pizza['prize'].' $'; ?></td>
+						<td class="pizzaName"><?= $pizzas['name']; ?></td>
+						<td><?= $pizzas['ingredients']; ?></td>
+						<td class="text-success font-weight-bolder"><?= $pizzas['prize'].' $'; ?></td>
 						<?php if(session()->get('role') == 1):?>
 						<td>
-							<a href="/edit/<?= $pizza['id'] ?>" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="/delete/<?= $pizza['id'] ?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+							<a href="/edit/<?= $pizzas['id'] ?>" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
+							<a href="/delete/<?= $pizzas['id'] ?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
 						</td>
 						<?php endif ?>
 					</tr>

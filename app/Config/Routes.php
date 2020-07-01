@@ -32,14 +32,22 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
 
+// routes for link to login
 $routes->get('/', 'Users::Login');
+
+// routes for link to register account
 $routes->match(['get','post'],'signup','Users::registerAccount');
 
+// routes for link to dashboard of pizza
 $routes->get('dashboard','DashboardPizza::ListOfPizza');
 
-
+// routes for link to delete each other pizza
 $routes->get('delete/(:num)','DashboardPizza::deletePizza/$1');
+
+// routes for link to edit information of pizza
 $routes->get('edit/(:num)','DashboardPizza::editPizza/$1');
+
+// link for logout user go back to dashboard
 $routes->get('logout', 'Users::logout');
 
 /**
