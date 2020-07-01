@@ -2,14 +2,15 @@
 use App\Models\PizzaModel;
 class DashboardPizza extends BaseController
 {
-	public function index()
+	public function ListOfPizza()
 	{	
 		$pizzas = new PizzaModel();
 		$data['listPizza'] = $pizzas->findAll();
-		return view('index',$data);
+		return view('index', $data);
 	}
 
-	public function addPizza(){
+	public function addPizza()
+	{
 		helper(['form']);
 		$data = [];
 		if($this->request->getMethod() == "post"){
@@ -45,13 +46,15 @@ class DashboardPizza extends BaseController
 	}
 
 
-	public function updatePizza(){
+	public function updatePizza()
+	{
 		$pizzas = new PizzaModel();
 		$pizzas->update($_POST['id'], $_POST);
 		return redirect()->to('/dashboard');
 	}
 
-	public function deletePizza($id){
+	public function deletePizza($id)
+	{
 		$pizzas = new PizzaModel();
 		$pizzas->find($id);
 		$delete = $pizzas->delete($id);

@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('layouts/navbar') ?>
+
     <div class="container mt-5">
 		<div class="row">
 			<div class="col-2"></div>
@@ -20,10 +21,11 @@
 						<th>Name</th>
 						<th>Ingredients</th>
 						<th>Price</th>
-					<?php if(session()->get('role') == 1):?>
-						<th>Status</th>
-					<?php endif ?>
+						<?php if(session()->get('role') == 1):?>
+							<th>Status</th>
+						<?php endif ?>
 					</tr>
+
 					<?php foreach($listPizza as $key => $pizza) : ?>
 					<tr>
 						<td class="pizzaName"><?= $pizza['name']; ?></td>

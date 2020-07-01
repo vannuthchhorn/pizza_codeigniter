@@ -1,14 +1,16 @@
-<?php namespace App\Controllers;
+<?php 
+namespace App\Controllers;
 use App\Models\UserModel;
 class Users extends BaseController
 {
-	// set login
-	public function index()
+	//  login
+	public function Login()
 	{
 		helper(['form']);
 		$data = [];
 		
-		if($this->request->getMethod() == "post"){
+		if($this->request->getMethod() == "post")
+		{
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|validatUser[email,password]'
@@ -19,7 +21,8 @@ class Users extends BaseController
 				]
 			];
 
-			if(!$this->validate($rules,$errors)){
+			if(!$this->validate($rules,$errors))
+			{
 				$data['validation'] = $this->validator;
 			}else{
 				$pizzas = new UserModel();
@@ -35,7 +38,8 @@ class Users extends BaseController
 		return view('auths/login',$data);
 	}
 
-	public function setUserSession($user){
+	public function setUserSession($user)
+	{
 		$data = [
 			'id' => $user['id'],
 			'email' => $user['email'],
@@ -56,13 +60,15 @@ class Users extends BaseController
 
 		$data = [];
 
-		if($this->request->getMethod() == "post"){
+		if($this->request->getMethod() == "post")
+		{
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required',
 				'address' => 'required',
 			];
-			if(!$this->validate($rules)){
+			if(!$this->validate($rules))
+			{
 				$data['validation'] = $this->validator;
 			}else{
 				$pizzas = new UserModel();
@@ -85,7 +91,8 @@ class Users extends BaseController
 		return view('auths/register',$data);
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		session()->destroy();
 		return redirect()->to('/');
 	}
