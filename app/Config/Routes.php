@@ -32,18 +32,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->add('/', 'DashboardPizza::Login');
-$routes->add('dashboard', 'DashboardPizza::listOfPizza');
 $routes->add('signin', 'DashboardPizza::Login');
+$routes->add('user', 'Users::Login');
+$routes->add('register', 'Users::registerAccount');
 
-
+$routes->add('dashboard', 'DashboardPizza::listOfPizza');
 $routes->add('delete/(:num)', 'DashboardPizza::deletePizza/$1');
 $routes->add('add', 'DashboardPizza::addPizza');
 $routes->add('edit', 'DashboardPizza::editPizza');
 
 //user pizza
 
-$routes->add('user', 'Users::Login');
-$routes->add('register', 'Users::registerAccount');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
