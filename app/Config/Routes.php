@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('DashboardPizza');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,26 +30,20 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-//$routes->get('/', 'Home::index');
 
-// routes for link to login
-$routes->get('/', 'Users::Login');
+$routes->add('/', 'DashboardPizza::Login');
+$routes->add('dashboard', 'DashboardPizza::listOfPizza');
+$routes->add('signin', 'DashboardPizza::Login');
 
-// routes for link to register account
-$routes->match(['get','post'],'signup','Users::registerAccount');
 
-// routes for link to dashboard of pizza
-$routes->get('dashboard','DashboardPizza::ListOfPizza');
+$routes->add('delete/(:num)', 'DashboardPizza::deletePizza/$1');
+$routes->add('add', 'DashboardPizza::addPizza');
+$routes->add('edit', 'DashboardPizza::editPizza');
 
-// routes for link to delete each other pizza
-$routes->get('delete/(:num)','DashboardPizza::deletePizza/$1');
+//user pizza
 
-// routes for link to edit information of pizza
-$routes->get('edit/(:num)','DashboardPizza::editPizza/$1');
-
-// link for logout user go back to dashboard
-$routes->get('logout', 'Users::logout');
-
+$routes->add('user', 'Users::Login');
+$routes->add('register', 'Users::registerAccount');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

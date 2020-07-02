@@ -7,44 +7,27 @@
     </div>
   </div>
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="dashboard" method="post">
+    <form class="auth__form" autocomplete="off" action="/dashboard" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
-        <hr>
-
-        <?php if(session()->get('success')) :?>
-          <div class="alert alert-success" role="alert"> 
-            <?= session()->get('success') ?>
-          </div>
-        <?php endif; ?>
-        
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email') ?>"> 
+            <input type="email" class="form-control" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" class="form-control" name="password" id="password" value="<?= set_value('password') ?>"> 
+            <input type="password" class="form-control" placeholder="Password">
           </div>
-
-          <?php if(isset($validation)) :?>
-            <div class="col-12">
-              <div class="alert alert-danger" role="alert">
-                <?= $validation->listErrors(); ?>
-              </div>
-            </div>
-          <?php endif; ?>
-
         </div>
-      </div>
+      </div> 
+      
       <div class="auth__form_actions">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
+        <button class="btn btn-primary btn-lg btn-block">
           NEXT
         </button>
-        <!-- set rount -->
         <div class="mt-2">
-          <a href="/signup" class="small text-uppercase">
+          <a href="/register" class="small text-uppercase">
             CREATE ACCOUNT
           </a>
         </div>
@@ -52,5 +35,4 @@
     </form>
   </div>
 </div>
-
 <?= $this->endSection() ?>
